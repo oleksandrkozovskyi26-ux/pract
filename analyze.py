@@ -48,6 +48,7 @@ math = 0
 python = 0
 english = 0
 stud = ""
+suma = 0
 with open(INPUT_FILE, "r", encoding="UTF-8") as file:
     next(file)
     for line in file:
@@ -55,20 +56,20 @@ with open(INPUT_FILE, "r", encoding="UTF-8") as file:
         line[1] = int(line[1])
         line[2] = int(line[2])
         line[3] = int(line[3])
-        suma = line[1] + line[2] + line[3]
-        math =+ line[1]
-        python =+ line[2]
-        english =+ line[3]
+        suma += line[1] + line[2] + line[3]
+        math += line[1]
+        python += line[2]
+        english += line[3]
         avanger = (line[1] + line[2] + line[3])/3
         if avanger > best:
             best = avanger
             stud = line[0]
-        count =+ 1
-avan = suma / count
+        count += 1
+avan = suma / (count*3)
 with open(OUTPUT_FILE, "w", encoding="UTF-8") as file:
-    file.write(f"Середній бал по класу: \nmath: {round(math,1)}\npython: {round(python,1)}\nenglish: {round(english,1)}\navanger: {round(avanger,1)}\n\nНайкращий студент: {stud} {best}\n")
+    file.write(f"Середній бал по класу: \nmath: {round(math/count,1)}\npython: {round(python/count,1)}\nenglish: {round(english/count,1)}\navanger: {round(avan,1)}\n\nНайкращий студент: {stud} {best}\n")
 
-print(f"Середній бал по класу: \nmath: {math}\npython: {python}\nenglish: {english}\navanger: {avanger}\n\nНайкращий студент: {stud} {round(best,1)}\n")
+print(f"Середній бал по класу: \nmath: {round(math/count,1)}\npython: {round(python/count,1)}\nenglish: {round(english/count,1)}\navanger: {round(avan,1)}\n\nНайкращий студент: {stud} {best}\n")
 # TODO 1: відкрийте INPUT_FILE через with open(...) as f:
 #   і пропустіть рядок заголовка (next(f))
 
